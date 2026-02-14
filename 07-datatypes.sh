@@ -11,7 +11,10 @@ echo "Sum is: $SUM"
 FRUITS=("apple" "banana" "orange")
 
 echo "fruit are: ${FRUITS[@]}"
- 
+echo "fruit are: ${FRUITS[0]}"
+echo "fruit are: ${FRUITS[1]}"
+echo "fruit are: ${FRUITS[2]}"
+
 
 
 
