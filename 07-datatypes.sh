@@ -7,10 +7,11 @@ SUM=$(($NUM1+$NUM2))
 
 echo "Sum is: $SUM"
 
+#ARRAY
+FRUITS=("apple" "banana" "orange")
 
-
-
-
+echo "fruit are: ${FRUITS[@]}"
+ 
 
 
 
