@@ -10,6 +10,7 @@ if  [ $USERID -ne 0 ]; then
     echo "please run this script with root user access" | tee -a $LOGS_FILE
     exit 1
 fi
+mkdir -p $LOGS_FOLDER
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
@@ -18,19 +19,13 @@ VALIDATE(){
     else
         echo  "$2 .... SUCCESS" |  tee -a $LOGS_FILE
     fi 
-
-
 }
 
 for package in $@ #sudo sh 14-loops.sh nginx mysql nodejs
 do
-
     dnf install $package -y &>>$LOGS_FILE
     VALADATE $? "$package installation"
-
 done 
-
-
 
 
 
