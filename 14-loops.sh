@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 USERID=$(id -u)
@@ -23,9 +22,35 @@ VALIDATE(){
 
 for package in $@ #sudo sh 14-loops.sh nginx mysql nodejs
 do
-    dnf install $package -y &>>$LOGS_FILE
+    dnf installed $package -y &>>$LOGS_FILE
+    if [ $? -ne 0 ]; then
+    echo "$package not installed, installing now"
+     dnf install $package -y &>>$LOGS_FILE
     VALIDATE $? "$package installation"
+    else
+        echo "$package already installed, skipping"
+    fi
 done 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
