@@ -2,6 +2,9 @@
 
 set -e # this will be checking for errors, if errors it will exit
 
+#!/bin/bash
+
+
 
 USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-script"
