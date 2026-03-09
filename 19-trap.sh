@@ -3,7 +3,6 @@
 set -u
 trap 'echo "there is an error in $LINENO, Command: $BASH_COMMAND" ' ERR
 
-
 USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-script"
 LOGS_FILE="/var/log/shell-script/$0.log"
@@ -12,15 +11,11 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-
 if  [ $USERID -ne 0 ]; then
     echo -e "$Rplease run this script with root user access $N" | tee -a $LOGS_FILE
     exit 1 
 fi
 mkdir -p $LOGS_FOLDER
-
-
-
 
 for package in $@ #sudo sh 14-loops.sh nginx mysql nodejs
 do
@@ -32,6 +27,57 @@ do
         echo -e "$package already installed ......$Y skipping $N"
     fi
 done 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
