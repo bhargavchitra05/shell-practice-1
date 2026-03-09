@@ -3,6 +3,6 @@
 COUNTRY=INDIA
 
 echo "i am in: $COUNTRY"
-echo "PID of SCRIPT-1: $$""
+echo "PID of SCRIPT-1: $$"
 
 sh script-2.sh
