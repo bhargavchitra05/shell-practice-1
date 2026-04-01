@@ -36,3 +36,11 @@ if [ ! -d "$SOURCE_DIR" ]; then
     log "$R Source Directory: $SOURCE_DIR does not exist $N"
     exit 1
 fi
+
+### Find the files
+FILES=$(find "$SOURCE_DIR" -name "*.log" -type f -mtime +$DAYS)
+
+log "Backup started"
+log "Source Directory: $SOURCE_DIR"
+log "Destination Directory: $DEST_DIR"
+log "Days: $DAYS"
