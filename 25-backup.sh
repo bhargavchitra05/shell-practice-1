@@ -37,6 +37,11 @@ if [ ! -d "$SOURCE_DIR" ]; then
     exit 1
 fi
 
+if [ ! -d "$DEST_DIR" ]; then
+    log "$R Destination Directory:  $DEST_DIR does not exist $N"
+    exit 1
+fi
+
 ### Find the files
 FILES=$(find "$SOURCE_DIR" -name "*.log" -type f -mtime +$DAYS)
 
@@ -48,9 +53,25 @@ log "Days: $DAYS"
 if [ -z "${FILES}" ]; then
     log "No files to archieve ... $Y Skipping $N"
 else
-# app-logs-$timestamp.zip
-    log "files found to archieve: $FILES"
+    # app-logs-$timestamp.zip
+    log "Files found to archieve: $FILES"
     TIMESTAMP=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.tar.gz"
-    echo "Archive name: $ZIP_FILE_NAME"
+    log "Archieve name: $ZIP_FILE_NAME"
+    tar -zcvf $ZIP_FILE_NAME $(find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS)
+
+    # Check archieve is success or not
+    if [ -f $ZIP_FILE_NAME ]; then
+        log "Archeival is ... $G SUCCESS $N"
+
+        while IFS= read -r filepath; do
+        # Process each line here
+        log "Deleting file: $filepath"
+        rm -f $filepath
+        log "Deleted file: $filepath"
+        done <<< $FILES
+    else
+        log "Archeival is ... $R FAILURE $N"
+        exit 1
+    fi
 fi
