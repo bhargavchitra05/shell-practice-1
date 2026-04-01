@@ -47,4 +47,8 @@ log "Days: $DAYS"
 
 if [ -z "${FILES}" ]; then
     log "No files to archieve ... $Y Skipping $N"
+else
+# app-logs-$timestamp.zip
+    log "files found to archieve: $FILES"
+    TIMESTAMP=$(date +%)
 fi
