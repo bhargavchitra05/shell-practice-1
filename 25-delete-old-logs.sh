@@ -7,7 +7,9 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-
+SOURCE_DIR=$1
+DEST_DIR=$2
+DAYS=${3:-14} # 14 days is the default value, if the user not supplied
 
 if [ $USERID -ne 0 ]; then
     echo -e "$Rplease run this script with root user access $N" 
@@ -23,6 +25,19 @@ USAGE(){
 if [ $# -lt 2]; then 
     USAGE
 fi
+
+if [ l -d $SOURCE_DIR ]; then
+    echo -e "$SOURCE_DIR does not exit $N"
+    exit 1
+fi 
+
+if [ l -d $DEST_DIR ]; then
+    echo -e "$DEST_DIR does not exit $N"
+    exit 1
+fi 
+
+
+
 
 
 
